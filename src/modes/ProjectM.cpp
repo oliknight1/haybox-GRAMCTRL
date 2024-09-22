@@ -43,16 +43,12 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
     outputs.start = inputs.start;
 
     // Activate D-Pad layer by holding Mod X + Mod Y or Nunchuk C button.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if ((inputs.mod_x && inputs.mod_y) || inputs.midshield || inputs.nunchuk_c) {
         outputs.dpadUp = inputs.c_up;
         outputs.dpadDown = inputs.c_down;
         outputs.dpadLeft = inputs.c_left;
         outputs.dpadRight = inputs.c_right;
     }
-
-    // Don't override dpad up if it's already pressed using the MX + MY dpad
-    // layer.
-    outputs.dpadUp = outputs.dpadUp || inputs.midshield;
 
     if (inputs.select)
         outputs.dpadLeft = true;

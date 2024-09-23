@@ -7,7 +7,7 @@
 ProjectM::ProjectM(socd::SocdType socd_type, ProjectMOptions options) {
     _socd_pair_count = 5;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
-        socd::SocdPair{&InputState::left,    &InputState::right,   socd_type},
+        socd::SocdPair{ &InputState::left,   &InputState::right,   socd_type},
         socd::SocdPair{ &InputState::down,   &InputState::up,      socd_type},
         socd::SocdPair{ &InputState::down,   &InputState::up2,      socd_type},
         socd::SocdPair{ &InputState::c_left, &InputState::c_right, socd_type},
@@ -209,7 +209,7 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     }
 
     // Shut off C-stick when using D-Pad layer.
-    if ((inputs.mod_x && inputs.mod_y) || inputs.nunchuk_c) {
+    if ((inputs.mod_x && inputs.mod_y) || inputs.midshield || inputs.nunchuk_c) {
         outputs.rightStickX = 128;
         outputs.rightStickY = 128;
     }

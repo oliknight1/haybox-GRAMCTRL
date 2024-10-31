@@ -50,6 +50,8 @@ void ProjectM::UpdateDigitalOutputs(InputState &inputs, OutputState &outputs) {
         outputs.dpadRight = inputs.c_right;
     }
 
+    outputs.dpadUp = outputs.dpadUp || inputs.lightshield;
+    
     if (inputs.select)
         outputs.dpadLeft = true;
     if (inputs.home)

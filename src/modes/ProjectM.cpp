@@ -74,7 +74,7 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
         outputs
     );
 
-    bool shield_button_pressed = inputs.l || inputs.lightshield;
+    bool shield_button_pressed = inputs.l;
 
     if (directions.diagonal) {
         if (directions.y == 1) {
@@ -191,10 +191,6 @@ void ProjectM::UpdateAnalogOutputs(InputState &inputs, OutputState &outputs) {
     if (_options.ledgedash_max_jump_traj && _horizontal_socd && !directions.vertical &&
         !shield_button_pressed) {
         outputs.leftStickX = 128 + (directions.x * 100);
-    }
-
-    if (inputs.lightshield) {
-        outputs.triggerRAnalog = 49;
     }
 
     // Send lightshield input if we are using Z = lightshield + A macro.

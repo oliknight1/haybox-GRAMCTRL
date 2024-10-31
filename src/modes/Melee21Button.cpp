@@ -4,7 +4,6 @@
 #define ANALOG_STICK_NEUTRAL 128
 #define ANALOG_STICK_MAX 208
 
-
 Melee21Button::Melee21Button(socd::SocdType socd_type, Melee21ButtonOptions options) {
     _socd_pair_count = 4;
     _socd_pairs = new socd::SocdPair[_socd_pair_count]{
